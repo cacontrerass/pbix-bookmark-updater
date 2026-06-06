@@ -1,0 +1,9 @@
+{
+  "mes_nuevo":     "May",
+  "anio_nuevo":    "2025L",
+  "meses_bytd":    "Ene,Feb,Mar,Abr",
+  "period_column": "Mes corto",
+  "year_column":   "Año",
+  "taxonomy":      "es_short_only",
+  "_note": "Estos parámetros deben coincidir con los usados para generar tests/fixtures/expected/"
+}

@@ -1,0 +1,54 @@
+{
+  "name": "@pbix/core",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./pbix/layout": {
+      "types": "./dist/pbix/layout.d.ts",
+      "import": "./dist/pbix/layout.js",
+      "default": "./dist/pbix/layout.js"
+    },
+    "./pbix/pbir": {
+      "types": "./dist/pbix/pbir.d.ts",
+      "import": "./dist/pbix/pbir.js",
+      "default": "./dist/pbix/pbir.js"
+    },
+    "./pbix/contentTypes": {
+      "types": "./dist/pbix/contentTypes.d.ts",
+      "import": "./dist/pbix/contentTypes.js",
+      "default": "./dist/pbix/contentTypes.js"
+    },
+    "./pbix/types": {
+      "types": "./dist/pbix/types.d.ts",
+      "import": "./dist/pbix/types.js",
+      "default": "./dist/pbix/types.js"
+    },
+    "./bookmarks/updater": {
+      "types": "./dist/bookmarks/updater.d.ts",
+      "import": "./dist/bookmarks/updater.js",
+      "default": "./dist/bookmarks/updater.js"
+    },
+    "./bookmarks/taxonomy": {
+      "types": "./dist/bookmarks/taxonomy.d.ts",
+      "import": "./dist/bookmarks/taxonomy.js",
+      "default": "./dist/bookmarks/taxonomy.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsx src/cli/run.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "tsc",
+    "prepare": "tsc"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.9.10",
+    "fflate": "^0.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.8"
+  }
+}

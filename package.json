@@ -1,0 +1,8 @@
+{
+  "name": "reseteo-bookmarks-power-bi",
+  "private": true,
+  "workspaces": [
+    "core-migration",
+    "web"
+  ]
+}

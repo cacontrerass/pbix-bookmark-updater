@@ -1,0 +1,30 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    // Python del entorno virtual LOCAL del proyecto (.venv en la raíz)
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "python.terminal.activateEnvironment": true,
+
+    // Perfil de terminal que activa el .venv del proyecto al abrir
+    "terminal.integrated.profiles.windows": {
+      "Python (.venv)": {
+        "source": "PowerShell",
+        "icon": "terminal-powershell",
+        "args": [
+          "-NoExit",
+          "-ExecutionPolicy", "Bypass",
+          "-Command",
+          "& '${workspaceFolder}\\.venv\\Scripts\\Activate.ps1'"
+        ]
+      }
+    },
+    "terminal.integrated.defaultProfile.windows": "Python (.venv)",
+
+    // Abrir la terminal directamente en la carpeta del proyecto
+    "terminal.integrated.cwd": "${workspaceFolder}"
+  }
+}

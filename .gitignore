@@ -1,0 +1,105 @@
+# ============================================
+# Python (Scripts_v2)
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Entorno virtual
+.venv/
+venv/
+env/
+
+# PyInstaller
+Scripts/build/
+Scripts/dist/
+Scripts/*.spec.bak
+
+# Estado local / logs
+*.bak
+
+# Backups generados por bookmarks_updater.py
+*.bookmark.json.bak
+
+# ============================================
+# Node.js / Next.js (web + core-migration)
+# ============================================
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+build/
+**/build/
+.next/
+**/.next/
+
+# Caches
+.turbo/
+**/.turbo/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env*.local
+.env.development.local
+.env.production.local
+
+# ============================================
+# Archivos Power BI (datos reales — NO subir)
+# ============================================
+*.pbix
+*.pbip
+
+# Carpetas de procesamiento con datos reales
+Pruebas_procesamiento/
+CARPETAS DE PROCESAMIENTO/
+rev_pbix/
+rev_proyecto/
+
+# Test fixtures (los .pbix de tests también quedan fuera)
+core-migration/tests/fixtures/input/*.pbix
+core-migration/tests/fixtures/expected/*.pbix
+!core-migration/tests/fixtures/input/.gitkeep
+!core-migration/tests/fixtures/expected/.gitkeep
+
+# ============================================
+# IDE / Editores
+# ============================================
+.vscode/
+!.vscode/settings.json.example
+.idea/
+*.swp
+*.swo
+
+# ============================================
+# Sistema operativo
+# ============================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ============================================
+# Carpetas obsoletas (versiones anteriores, NO subir)
+# ============================================
+Scripts/
+Scripts - Backup/
+Scripts_aux/
+Scripts_v1/
+
+# ============================================
+# Archivos privados / solo locales
+# ============================================
+MIGRATION_PLAN.md
+MIGRATION_NOTES.md
+requirements.txt
+pyrightconfig.json
+Scripts_v2/
