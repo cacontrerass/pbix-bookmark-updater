@@ -21,9 +21,6 @@ export function BrandHeader() {
         className="block h-[47px] w-auto md:hidden"
         priority
       />
-      <p className="mt-3 text-sm tracking-wide text-muted-foreground">
-        Data Analytics Tools
-      </p>
     </div>
   )
 }
