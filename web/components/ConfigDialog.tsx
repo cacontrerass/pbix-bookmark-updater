@@ -55,6 +55,13 @@ export function ConfigDialog() {
           <DialogTitle>Configuración del modelo de datos</DialogTitle>
         </DialogHeader>
 
+        <p className="text-sm text-muted-foreground mb-4">
+          Indica los nombres exactos (tal como aparecen en el modelo de
+          datos) de los campos que usas en los filtros de Mes y Año dentro
+          de los bookmarks. La herramienta los usa para localizar y
+          actualizar correctamente cada filtro.
+        </p>
+
         <div className="space-y-4 py-2">
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1.5">

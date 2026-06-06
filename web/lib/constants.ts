@@ -82,7 +82,7 @@ export const DEFAULT_MODEL_SETUP = {
 } as const
 
 export const EXECUTION_STEPS: readonly string[] = [
-  "Seleccionar la carpeta de origen con los archivos .pbix a procesar.",
-  "Seleccionar la carpeta de destino donde se guardarán los archivos actualizados.",
-  "Configurar los parámetros (mes, año, BYTD) y ejecutar el proceso.",
+  "Configura los campos de Mes y Año del modelo de datos.",
+  "Define el mes, año y meses BYTD para actualizar los bookmarks.",
+  "Selecciona las carpetas de origen y destino, y ejecuta el proceso.",
 ]

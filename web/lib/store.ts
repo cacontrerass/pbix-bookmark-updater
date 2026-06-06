@@ -165,37 +165,26 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: "pbix-updater-state",
-      storage: createJSONStorage(
-        () => {
-          if (typeof window === "undefined") {
-            return {
-              getItem: () => null,
-              setItem: () => {},
-              removeItem: () => {},
-            }
+      storage: createJSONStorage(() => {
+        if (typeof window === "undefined") {
+          return {
+            getItem: () => null,
+            setItem: () => {},
+            removeItem: () => {},
           }
-          return localStorage
-        },
-        {
-          replacer: (key, value) => {
-            if (key === "mesesBytd" && value instanceof Set) {
-              return Array.from(value as Set<string>)
-            }
-            return value
-          },
-          reviver: (key, value) => {
-            if (key === "mesesBytd" && Array.isArray(value)) {
-              return new Set(value as string[])
-            }
-            return value
-          },
         }
-      ),
+        return localStorage
+      }),
       partialize: (state) => ({
-        mesNuevo: state.mesNuevo,
-        anioNuevo: state.anioNuevo,
-        mesesBytd: state.mesesBytd,
         modelSetup: state.modelSetup,
+      }),
+      merge: (persistedState, currentState) => ({
+        ...currentState,
+        modelSetup: {
+          ...currentState.modelSetup,
+          ...(persistedState as Pick<AppState, "modelSetup"> | undefined)
+            ?.modelSetup,
+        },
       }),
     }
   )
