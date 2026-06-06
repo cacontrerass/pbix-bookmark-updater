@@ -13,8 +13,13 @@ import {
   listPbixFiles,
 } from "@/lib/fs/fileSystemAccess"
 import { formatBytes } from "@/lib/utils"
+import { useIsTouchDevice } from "@/lib/device"
+
+const MOBILE_BROWSE_HINT =
+  "Requiere un computador con Chrome o Edge. No disponible en dispositivos móviles."
 
 export function FoldersSection() {
+  const isMobile = useIsTouchDevice()
   const sourceFolderHandle = useAppStore((s) => s.sourceFolderHandle)
   const sourceFolderName = useAppStore((s) => s.sourceFolderName)
   const sourceFiles = useAppStore((s) => s.sourceFiles)
@@ -71,8 +76,11 @@ export function FoldersSection() {
             <Button
               variant="outline"
               onClick={handleBrowseSource}
+              disabled={isMobile}
+              title={isMobile ? MOBILE_BROWSE_HINT : undefined}
               aria-label="Examinar carpeta de origen"
-              className="shrink-0 border-primary/60 text-primary hover:bg-primary/10 hover:text-primary"
+              aria-disabled={isMobile}
+              className="shrink-0 border-primary/60 text-primary hover:bg-primary/10 hover:text-primary disabled:pointer-events-auto disabled:cursor-not-allowed disabled:opacity-50"
             >
               <FolderOpen className="mr-1.5 size-4" />
               Examinar…
@@ -124,8 +132,11 @@ export function FoldersSection() {
             <Button
               variant="outline"
               onClick={handleBrowseTarget}
+              disabled={isMobile}
+              title={isMobile ? MOBILE_BROWSE_HINT : undefined}
               aria-label="Examinar carpeta de destino"
-              className="shrink-0 border-primary/60 text-primary hover:bg-primary/10 hover:text-primary"
+              aria-disabled={isMobile}
+              className="shrink-0 border-primary/60 text-primary hover:bg-primary/10 hover:text-primary disabled:pointer-events-auto disabled:cursor-not-allowed disabled:opacity-50"
             >
               <FolderOpen className="mr-1.5 size-4" />
               Examinar…

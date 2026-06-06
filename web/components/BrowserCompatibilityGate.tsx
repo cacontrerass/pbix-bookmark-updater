@@ -3,22 +3,38 @@
 import { useEffect, useState } from "react"
 import { AlertTriangle } from "lucide-react"
 import { isFileSystemAccessSupported } from "@/lib/fs/fileSystemAccess"
+import { isTouchDevice } from "@/lib/device"
 
 interface Props {
   children: React.ReactNode
 }
 
-type CheckState = "checking" | "supported" | "unsupported"
+type CheckState = "checking" | "supported" | "unsupported" | "mobile-preview"
+
+function MobilePreviewBanner() {
+  return (
+    <div
+      role="status"
+      className="mx-auto mb-4 w-full max-w-4xl rounded-lg border border-primary/20 bg-primary/10 px-4 py-3 text-sm leading-snug text-foreground"
+    >
+      📱 Para usar la herramienta necesitas un computador. Esta vista es solo
+      para previsualización.
+    </div>
+  )
+}
 
 export function BrowserCompatibilityGate({ children }: Props) {
   const [state, setState] = useState<CheckState>("checking")
 
   useEffect(() => {
+    if (isTouchDevice()) {
+      setState("mobile-preview")
+      return
+    }
     setState(isFileSystemAccessSupported() ? "supported" : "unsupported")
   }, [])
 
   if (state === "checking") {
-    // Render nothing during SSR/hydration to avoid flashing the block screen.
     return null
   }
 
@@ -52,6 +68,17 @@ export function BrowserCompatibilityGate({ children }: Props) {
             </div>
           </div>
         </div>
+      </div>
+    )
+  }
+
+  if (state === "mobile-preview") {
+    return (
+      <div className="min-h-screen">
+        <div className="px-4 pt-6 sm:px-6 lg:px-8">
+          <MobilePreviewBanner />
+        </div>
+        {children}
       </div>
     )
   }

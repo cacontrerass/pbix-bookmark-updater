@@ -17,8 +17,13 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Separator } from "@/components/ui/separator"
 import { TAXONOMY_CHOICES } from "@/lib/constants"
 import { useAppStore } from "@/lib/store"
+import { cn } from "@/lib/utils"
 
-export function ConfigDialog() {
+interface ConfigDialogProps {
+  triggerClassName?: string
+}
+
+export function ConfigDialog({ triggerClassName }: ConfigDialogProps) {
   const modelSetup = useAppStore((s) => s.modelSetup)
   const setModelSetup = useAppStore((s) => s.setModelSetup)
 
@@ -45,7 +50,17 @@ export function ConfigDialog() {
   return (
     <Dialog open={open} onOpenChange={handleOpen}>
       <DialogTrigger
-        render={<Button variant="outline" size="sm" aria-label="Abrir configuración" />}
+        render={
+          <Button
+            variant="outline"
+            size="sm"
+            aria-label="Abrir configuración"
+            className={cn(
+              "border-primary/60 text-primary hover:bg-primary/10 hover:text-primary",
+              triggerClassName
+            )}
+          />
+        }
       >
         <Settings className="mr-1.5 size-3.5" />
         Configuración

@@ -10,6 +10,11 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils"
+
+interface InfoDialogProps {
+  triggerClassName?: string
+}
 
 const SUFFIX_RULES = [
   {
@@ -43,11 +48,21 @@ const SUFFIX_RULES = [
   },
 ]
 
-export function InfoDialog() {
+export function InfoDialog({ triggerClassName }: InfoDialogProps) {
   return (
     <Dialog>
       <DialogTrigger
-        render={<Button variant="outline" size="sm" aria-label="Ver información" />}
+        render={
+          <Button
+            variant="outline"
+            size="sm"
+            aria-label="Ver información"
+            className={cn(
+              "border-primary/60 text-primary hover:bg-primary/10 hover:text-primary",
+              triggerClassName
+            )}
+          />
+        }
       >
         <Info className="mr-1.5 size-3.5" />
         Información
